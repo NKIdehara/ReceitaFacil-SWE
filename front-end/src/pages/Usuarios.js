@@ -10,7 +10,6 @@ export default function Usuarios() {
     }, []);
     const loadUsuarios = async() => {
         const result = await axios.get("http://localhost:8080/usuarios");
-        // console.log(result.data);
         setUsuarios(result.data);
     }
 
@@ -34,9 +33,9 @@ export default function Usuarios() {
                             <td>{usuario.nome}</td>
                             <td>{usuario.email}</td>
                             <td>
-                                <If condition={usuario.tipoAcesso == 1}>
+                                <If condition={usuario.tipoAcesso === 1}>
                                     <Then>{"Administrador"}</Then>
-                                    <Else><If condition={usuario.tipoAcesso == 2}>
+                                    <Else><If condition={usuario.tipoAcesso === 2}>
                                         <Then>{"Usuário"}</Then>
                                         <Else>{"Visitante"}</Else>
                                     </If></Else>

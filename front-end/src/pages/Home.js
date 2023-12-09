@@ -3,10 +3,10 @@ import infnet from '../resources/images/ic_infnet.png';
 
 
 export default function Home() {
+    const imgSize = {'max-width': '300px'};
     return (
-
         <div className="container-fluid">
-            <div><img src={infnet} className="w-25 m-3" /></div>
+            <div><img src={infnet} className="w-25 m-3" style={imgSize} /></div>
             <div>
                 <h1>Instituto Infnet</h1>
                 <h2>Engenharia de Software</h2>
