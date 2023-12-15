@@ -1,13 +1,10 @@
-import { render } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
-import Receitas from "./pages/Receitas";
+import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import Home from "./pages/Home";
 
+test('verifica se a tela inicial está renderizada corretamente', () => {
+    render(<Home />, {wrapper: BrowserRouter})
 
-test("current user is active in sidebar", () => {
-    render(
-        <MemoryRouter initialEntries={["/receitas"]}>
-            <Receitas />
-        </MemoryRouter>
-    );
-    expectUserToBeActive(3);
+    expect(screen.getByText(/infnet/i)).toBeInTheDocument()
+  
 });
