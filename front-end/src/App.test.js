@@ -1,8 +1,13 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import Receitas from "./pages/Receitas";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+test("current user is active in sidebar", () => {
+    render(
+        <MemoryRouter initialEntries={["/receitas"]}>
+            <Receitas />
+        </MemoryRouter>
+    );
+    expectUserToBeActive(3);
 });

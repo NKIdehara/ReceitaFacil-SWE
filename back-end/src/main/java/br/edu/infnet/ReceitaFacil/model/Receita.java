@@ -3,7 +3,6 @@ package br.edu.infnet.ReceitaFacil.model;
 import java.sql.Date;
 
 import jakarta.persistence.Temporal;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
