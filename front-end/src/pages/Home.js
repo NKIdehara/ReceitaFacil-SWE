@@ -3,7 +3,7 @@ import infnet from '../resources/images/ic_infnet.png';
 
 
 export default function Home() {
-    const imgSize = {'max-width': '300px'};
+    const imgSize = {'maxWidth': '200px'};
     return (
         <div className="container-fluid">
             <div><img src={infnet} className="w-25 m-3" style={imgSize} /></div>

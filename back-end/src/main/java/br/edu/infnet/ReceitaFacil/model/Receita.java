@@ -14,9 +14,9 @@ public class Receita {
     @GeneratedValue
     private Long idReceita;
     private String nome;
+    private String ingredientes;
     private String preparo;
     @Temporal(TemporalType.DATE)
-    private Date dataReceita;
 
     public Long getIdReceita() {
         return this.idReceita;
@@ -49,4 +49,13 @@ public class Receita {
     public void setDataReceita(Date dataReceita) {
         this.dataReceita = dataReceita;
     }
+
+    public String getIngredientes() {
+        return this.ingredientes;
+    }
+
+    public void setIngredientes(String ingredientes) {
+        this.ingredientes = ingredientes;
+    }
+    private Date dataReceita;
 }

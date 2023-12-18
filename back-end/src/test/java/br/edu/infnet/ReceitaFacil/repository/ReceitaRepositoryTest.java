@@ -23,9 +23,9 @@ public class ReceitaRepositoryTest {
     @Test
     public void ReceitaFacil_InclusaoDeReceita_True() {
         // Arrange
-        // Receita receita = Receita.builder().nome("Teste 1").preparo("Preparo 1").dataReceita(Date.valueOf(LocalDate.now())).build();
         Receita receita = new Receita();
         receita.setNome("Teste 1");
+        receita.setIngredientes("Ingredientes 1");
         receita.setPreparo("Preparo 1");
         receita.setDataReceita(Date.valueOf(LocalDate.now()));
 
@@ -41,11 +41,13 @@ public class ReceitaRepositoryTest {
         // Arrange
         Receita receita1 = new Receita();
         receita1.setNome("Teste 1");
+        receita1.setIngredientes("Ingredientes 1");
         receita1.setPreparo("Preparo 1");
         receita1.setDataReceita(Date.valueOf(LocalDate.now()));
 
         Receita receita2 = new Receita();
         receita2.setNome("Teste 2");
+        receita2.setIngredientes("Ingredientes 2");
         receita2.setPreparo("Preparo 2");
         receita2.setDataReceita(Date.valueOf(LocalDate.now()));
 

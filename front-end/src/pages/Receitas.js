@@ -21,17 +21,19 @@ export default function Receitas() {
                     <th scope="col">#</th>
                     <th scope="col">Data</th>
                     <th scope="col">Nome da Receita</th>
+                    <th scope="col">Ingredientes</th>
                     <th scope="col">Preparo</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="text-start">
                     {
                         receitas.map((receita, idReceita) => (
                             <tr>
                             <th scope="row" key={idReceita}>{idReceita+1}</th>
                             <td>{receita.dataReceita}</td>
                             <td>{receita.nome}</td>
-                            <td>{receita.preparo}</td>
+                            <td style={{whiteSpace: "pre-wrap"}}>{receita.ingredientes}</td>
+                            <td style={{whiteSpace: "pre-wrap"}}>{receita.preparo}</td>
                             </tr>
                         ))
                     }

@@ -9,6 +9,7 @@ import AddUsuario from './records/AddUsuario';
 import AddReceita from './records/AddReceita';
 
 function App() {
+    const tipoAcesso = 0;
     return (
         <div className="App">
             <Router>
@@ -21,8 +22,7 @@ function App() {
                     <Route exact path="/addUsuario" element={<AddUsuario />} />
                     <Route exact path="/addReceita" element={<AddReceita />} />
                 </Routes>
-            </Router>
-          
+            </Router>          
         </div>
     );
 }
