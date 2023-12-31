@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Google Firebase ###
+/src/main/resources/google-services*

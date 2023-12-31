@@ -13,10 +13,14 @@ public class Receita {
     @Id
     @GeneratedValue
     private Long idReceita;
+    private String id;
     private String nome;
     private String ingredientes;
     private String preparo;
     @Temporal(TemporalType.DATE)
+    private Date dataReceita;
+    private String usuario;
+    private String figura;
 
     public Long getIdReceita() {
         return this.idReceita;
@@ -24,6 +28,14 @@ public class Receita {
 
     public void setIdReceita(Long idReceita) {
         this.idReceita = idReceita;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -57,5 +69,33 @@ public class Receita {
     public void setIngredientes(String ingredientes) {
         this.ingredientes = ingredientes;
     }
-    private Date dataReceita;
+
+    public String getUsuario() {
+        return this.usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getFigura() {
+        return this.figura;
+    }
+
+    public void setFigura(String figura) {
+        this.figura = figura;
+    }
+
+    public Receita() {
+    }
+
+    public Receita(String id, String nome, String ingredientes, String preparo, Date dataReceita, String usuario, String figura) {
+         this.id = id;
+         this.nome = nome;
+         this.ingredientes = ingredientes;
+         this.preparo = preparo;
+         this.dataReceita = dataReceita;
+         this.usuario = usuario;
+         this.figura = figura;
+    }
 }

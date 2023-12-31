@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { format } from "date-fns";
 import { Link, useNavigate } from 'react-router-dom';
 
     export default function AddReceita() {
 
         let navigate = useNavigate();
 
-        const hoje = new Date();
+        var hoje = format(new Date(), "yyyy-MM-dd")
 
         const [receita, setReceita] = useState({
             nome: "",
             ingredientes: "",
             preparo: "",
-            dataReceita: hoje
+            dataReceita: hoje,
+            usuario: "",
+            figura: "https://firebasestorage.googleapis.com/v0/b/infnet-receitafacil.appspot.com/o/ic_food_0.png?alt=media&token=af33f298-dbcc-40ea-aa8c-ed1430a46a57"
         });
 
-        const {nome, ingredientes, preparo, dataReceita} = receita;
+        const {nome, ingredientes, preparo, dataReceita, usuario, figura} = receita;
 
         const onInputChange = (e) => {
             setReceita({...receita, [e.target.name]:e.target.value});
@@ -23,7 +26,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
         const onSubmit = async (e) => {
             e.preventDefault();
-            await axios.post("http://localhost:8080/receita", receita);
+            await axios.post("http://localhost:8080/receitaFB", receita);
             navigate("/receitas")
         }
 

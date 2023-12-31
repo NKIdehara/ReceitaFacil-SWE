@@ -8,7 +8,7 @@ export default function Receitas() {
         loadReceitas();
     }, []);
     const loadReceitas = async() => {
-        const result = await axios.get("http://localhost:8080/receitas");
+        const result = await axios.get("http://localhost:8080/receitasFB");
         setReceitas(result.data);
     }
 
@@ -19,6 +19,7 @@ export default function Receitas() {
                 <thead className="table-secondary">
                     <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Foto</th>
                     <th scope="col">Data</th>
                     <th scope="col">Nome da Receita</th>
                     <th scope="col">Ingredientes</th>
@@ -30,6 +31,7 @@ export default function Receitas() {
                         receitas.map((receita, idReceita) => (
                             <tr>
                             <th scope="row" key={idReceita}>{idReceita+1}</th>
+                            <td><img src={receita.figura} style={{'maxWidth': '100px'}}/></td>
                             <td>{receita.dataReceita}</td>
                             <td>{receita.nome}</td>
                             <td style={{whiteSpace: "pre-wrap"}}>{receita.ingredientes}</td>
