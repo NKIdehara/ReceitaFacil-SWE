@@ -3,16 +3,9 @@ package br.edu.infnet.ReceitaFacil.model;
 import java.sql.Date;
 
 import jakarta.persistence.Temporal;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import jakarta.persistence.TemporalType;
 
-@Entity
 public class Receita {
-    @Id
-    @GeneratedValue
-    private Long idReceita;
     private String id;
     private String nome;
     private String ingredientes;
@@ -21,14 +14,6 @@ public class Receita {
     private Date dataReceita;
     private String usuario;
     private String figura;
-
-    public Long getIdReceita() {
-        return this.idReceita;
-    }
-
-    public void setIdReceita(Long idReceita) {
-        this.idReceita = idReceita;
-    }
 
     public String getId() {
         return this.id;

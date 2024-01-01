@@ -1,10 +1,10 @@
+import * as bootstrap from 'bootstrap';
 import React, { useState } from 'react';
 import ic_cook from '../resources/images/ic_cook.png';
 import { auth } from '../Firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-
-export var userUID = null;
+import { user } from '../Firebase';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -14,33 +14,35 @@ const Login = () => {
 
     const state = { button: 0 };
 
+    const [message, setMessage] = useState('')
+
     const entrar = (e) => {
         e.preventDefault();
         if (state.button === 1) {
             signInWithEmailAndPassword(auth, email, senha)
                 .then((userCredential) => {
-                    userUID = userCredential.user.uid;
+                    user.setUID(userCredential.user.uid);
                     navigate("/home");
-                    console.log(userCredential);
-                    console.log(userUID);
                 })
                 .catch((error) => {
-                    console.log(error);
+                    setMessage(error.message);
+                    toast.show();
                 });
         }
         if (state.button === 2) {
             createUserWithEmailAndPassword(auth, email, senha)
                 .then((userCredential) => {
-                    userUID = userCredential.user.uid;
+                    user.setUID(userCredential.user.uid);
                     navigate("/home");
-                    console.log(userCredential);
-                    console.log(userUID);
                 })
                 .catch((error) => {
-                    console.log(error);
+                    setMessage(error.message);
+                    toast.show();
                 });
         }
     }
+
+    const toast = new bootstrap.Toast(document.getElementById('Toast'));
     
     return (
         <div className="container-fluid">
@@ -70,8 +72,18 @@ const Login = () => {
                     <button type="submit" className="btn btn-outline-primary m-3 btn-lg" onClick={() => (state.button = 1)} >Login</button>
                     <button type="submit" className="btn btn-outline-primary m-3 btn-lg" onClick={() => (state.button = 2)} >Novo</button>
                 </form>
-            </div>
 
+
+                <div id="Toast" className="toast align-items-center text-bg-danger border-0 position-absolute top-50 start-50 translate-middle" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div className="d-flex">
+                        <div className="toast-body">
+                            {message}
+                        </div>
+                        <button type="button" className="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     )
 }

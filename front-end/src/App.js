@@ -7,16 +7,16 @@ import Receitas from './pages/Receitas';
 import Usuarios from './pages/Usuarios';
 import AddUsuario from './records/AddUsuario';
 import AddReceita from './records/AddReceita';
-import Login, { userUID } from './pages/Login';
-import { Else, If } from 'react-if';
+import Login from './pages/Login';
+import Logout from './pages/Logout';
 
 function App() {
-    const tipoAcesso = 0;
     return (
         <div className="App">
             <Router>
                 <Routes>
                     <Route path="/" element={<Login />} />
+                    <Route path="/logout" element={<Logout />} />
                     <Route element={
                         <>
                         <Navbar />

@@ -1,9 +1,9 @@
 import React from 'react'
 import infnet from '../resources/images/ic_infnet.png';
-import { userUID } from './Login';
+import { user } from '../Firebase';
 
 export default function Home() {
-    if(userUID !== null) {
+    if(!user.isNull) {
         return (
             <div className="container-fluid">
                 <div><img src={infnet} className="w-25 m-3" style={{'maxWidth': '200px'}} /></div>

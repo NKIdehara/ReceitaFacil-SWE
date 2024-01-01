@@ -26,7 +26,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
         const onSubmit = async (e) => {
             e.preventDefault();
-            await axios.post("http://localhost:8080/receitaFB", receita);
+            await axios.post("http://localhost:8080/receita", receita);
             navigate("/receitas")
         }
 

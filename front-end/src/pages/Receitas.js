@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { userUID } from './Login';
+import { user } from '../Firebase';
+import Spinner from '../layout/Spinner';
 
 export default function Receitas() {
     const [receitas, setReceitas] = useState([]);
     useEffect( () => {
         loadReceitas();
     }, []);
+
     const loadReceitas = async() => {
-        const result = await axios.get("http://localhost:8080/receitasFB");
+        const result = await axios.post("http://localhost:8080/receitas", user.getUID);
         setReceitas(result.data);
+        setEspera(false);
     }
 
-    if(userUID !== null) {
+    const [espera, setEspera] = useState(true);    
+
+    if(!user.isNull) {
         return (
             <div className="container">
                 <div className="py-4 ">
+
                     <table className="table table-hover shadow">
                     <thead className="table-secondary">
                         <tr>
@@ -43,11 +49,12 @@ export default function Receitas() {
                         }
                     </tbody>
                     </table>
+                    {espera && <Spinner />}                    
                 </div>
 
                 <div className="float-end">
                     <Link className="btn btn-outline-dark m-1" to="/addReceita">Nova Receita</Link>
-                    <Link className="btn btn-outline-dark m-1" to="/">Cancelar</Link>
+                    <Link className="btn btn-outline-dark m-1" to="/home">Cancelar</Link>
                 </div>
             </div>
        )

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { If, Else, Then } from 'react-if';
-import { userUID } from './Login';
+import { user } from '../Firebase';
 
 export default function Usuarios() {
     const [usuarios, setUsuarios] = useState([]);
@@ -14,7 +14,7 @@ export default function Usuarios() {
         setUsuarios(result.data);
     }
 
-    if(userUID !== null) {
+    if(!user.isNull) {
         return (
             <div className="container">
                 <div className="py-4 ">
@@ -52,7 +52,7 @@ export default function Usuarios() {
 
                 <div className="float-end">
                     <Link className="btn btn-outline-dark m-1" to="/addUsuario">Novo Usuário</Link>
-                    <Link className="btn btn-outline-dark m-1" to="/">Cancelar</Link>
+                    <Link className="btn btn-outline-dark m-1" to="/home">Cancelar</Link>
                 </div>
             </div>
         )
