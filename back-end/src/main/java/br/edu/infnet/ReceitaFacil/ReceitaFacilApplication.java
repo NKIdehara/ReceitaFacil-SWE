@@ -21,7 +21,7 @@ public class ReceitaFacilApplication {
 		File file = new File(Objects.requireNonNull(classLoader.getResource("google-services.json")).getFile());
 		FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
 
-		FirebaseOptions options = new FirebaseOptions.Builder()
+        FirebaseOptions options = FirebaseOptions.builder()
 			.setCredentials(GoogleCredentials.fromStream(serviceAccount))
 			.build();
 

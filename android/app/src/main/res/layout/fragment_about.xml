@@ -44,8 +44,8 @@
             android:layout_height="wrap_content"
             android:contentDescription="Disciplinas"
             android:paddingLeft="8dp"
-            android:text="\n\n• Desenvolvimento de Interfaces Android\n• Fundamentos do Desenvolvimento Android\n• Desenvolvimento Kotlin: Android\n• Segurança, Monetização e Publicação de Aplicativos Android\n• Projeto de Bloco: Desenvolvimento Android\n\n\n(*)Atualizado para a Disciplina:\n• Projeto de Bloco: Engenharia Disciplinada de Softwares"
-            android:textSize="16sp" />
+            android:text="\n• Desenvolvimento de Interfaces Android\n• Fundamentos do Desenvolvimento Android\n• Desenvolvimento Kotlin: Android\n• Segurança, Monetização e Publicação de Aplicativos Android\n• Projeto de Bloco: Desenvolvimento Android\n\n(*)Atualizado para a Disciplina:\n• Projeto de Bloco: Engenharia Disciplinada de Softwares"
+            android:textSize="15sp" />
 
     </LinearLayout>
 

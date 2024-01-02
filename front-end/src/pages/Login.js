@@ -11,10 +11,9 @@ const Login = () => {
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const [message, setMessage] = useState('')
 
     const state = { button: 0 };
-
-    const [message, setMessage] = useState('')
 
     const entrar = (e) => {
         e.preventDefault();

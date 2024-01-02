@@ -43,8 +43,8 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="Disciplinas"
                 android:paddingLeft="8dp"
-                android:text="• Desenvolvimento de Interfaces Android\n• Fundamentos do Desenvolvimento Android\n• Desenvolvimento Kotlin: Android\n• Segurança, Monetização e Publicação de Aplicativos Android\n• Projeto de Bloco: Desenvolvimento Android"
-                android:textSize="16sp" />
+                android:text="• Desenvolvimento de Interfaces Android\n• Fundamentos do Desenvolvimento Android\n• Desenvolvimento Kotlin: Android\n• Segurança, Monetização e Publicação de Aplicativos Android\n• Projeto de Bloco: Desenvolvimento Android\n\n(*)Atualizado para a Disciplina:\n• Projeto de Bloco: Engenharia Disciplinada de Softwares"
+                android:textSize="10sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -78,7 +78,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:gravity="bottom"
-            android:text="Aluno: Nelson Idehara" />
+            android:text="Aluno: Nelson Idehara"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/textView5"
@@ -86,14 +87,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:gravity="bottom"
-            android:text="Professores: Denis Cople / Jonh Carvalho" />
+            android:text="Professores: Denis Cople / Jonh Carvalho / (Armênio Cardoso)"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Abril/2022"
-            android:textAlignment="textEnd" />
+            android:text="Abril/2022\n(Janeiro/2024)"
+            android:textAlignment="textEnd"
+            android:textSize="10sp" />
     </LinearLayout>
 
 </FrameLayout>

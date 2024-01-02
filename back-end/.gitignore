@@ -34,3 +34,4 @@ build/
 
 ### Google Firebase ###
 /src/main/resources/google-services*
+/src/test/resources/google-services*

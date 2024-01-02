@@ -65,7 +65,7 @@ public class ReceitaService {
 
     public List<Receita> getReceitas() throws InterruptedException, ExecutionException {
         List<Receita> receitas = new ArrayList<Receita>();
-        Firestore dbFirestore = FirestoreClient.getFirestore(); 
+        Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<QuerySnapshot> query = dbFirestore.collection("Receitas").orderBy("nome").get();
         QuerySnapshot querySnapshot = query.get();
         List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
