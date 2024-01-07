@@ -29,9 +29,11 @@ jobs:
         run: |
           npm install
           npm run build --if-present
+        env:
+          CI: false
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./front-end/* -r
+        run: zip release.zip ./front-end/build/* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -55,7 +57,7 @@ jobs:
       - name: Unzip artifact for deployment
         run: |
           unzip release.zip
-          mv ./front-end/* ./
+          mv ./front-end/build/* ./
       
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp

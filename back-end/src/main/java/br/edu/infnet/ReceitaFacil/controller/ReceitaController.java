@@ -13,7 +13,6 @@ import br.edu.infnet.ReceitaFacil.model.Receita;
 import br.edu.infnet.ReceitaFacil.service.ReceitaService;
 
 @RestController
-// @CrossOrigin("http://localhost:3000")
 @CrossOrigin
 public class ReceitaController {
     public ReceitaService receitaService;

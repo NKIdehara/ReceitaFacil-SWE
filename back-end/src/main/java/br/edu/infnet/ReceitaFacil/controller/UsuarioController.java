@@ -13,7 +13,6 @@ import br.edu.infnet.ReceitaFacil.model.Usuario;
 import br.edu.infnet.ReceitaFacil.service.UsuarioService;
 
 @RestController
-// @CrossOrigin("http://localhost:3000")
 @CrossOrigin
 public class UsuarioController {
     public UsuarioService usuarioService;
