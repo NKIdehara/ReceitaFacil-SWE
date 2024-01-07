@@ -1,0 +1,4 @@
+[config]
+front-end = front-end/
+back-end = back-end/
+android = android/
