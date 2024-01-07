@@ -22,7 +22,6 @@ jobs:
           java-version: '17'
 
       - name: Build with Maven
-        working-directory: ./back-end
         run: mvn clean install
 
       - name: Upload artifact for deployment job
