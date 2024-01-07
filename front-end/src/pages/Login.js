@@ -1,10 +1,9 @@
 import * as bootstrap from 'bootstrap';
 import React, { useState } from 'react';
 import ic_cook from '../resources/images/ic_cook.png';
-import { auth } from '../Firebase';
+import { auth, user } from '../Firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { user } from '../Firebase';
 
 const Login = () => {
     const navigate = useNavigate();
