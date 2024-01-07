@@ -3,14 +3,12 @@ package br.edu.infnet.ReceitaFacil.controller;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.infnet.ReceitaFacil.model.Usuario;
 import br.edu.infnet.ReceitaFacil.model.Usuario;
 import br.edu.infnet.ReceitaFacil.service.UsuarioService;
 
@@ -24,13 +22,13 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    // @PostMapping("/usuario")
-    // Usuario novoUsuario(@RequestBody Usuario novoUsuario) {
-    //     return usuarioRepository.save(novoUsuario);
-    // }
-
-    @GetMapping("/usuarios")
-    List<Usuario> getAllUsuarios() throws InterruptedException, ExecutionException {        
+     @GetMapping("/usuarios")
+    List<Usuario> getAllUsuarios() throws InterruptedException, ExecutionException {
         return usuarioService.getUsuarios();
+    }    
+
+   @GetMapping("/")
+    String teste()  {
+        return "Conexão OK";
     }    
 }
