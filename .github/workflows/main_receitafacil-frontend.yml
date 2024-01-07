@@ -59,4 +59,4 @@ jobs:
           app-name: 'receitafacil-frontend'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1E244B0AECFB4419BF1A8311C83BA12D }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F1CC39CB60E94F4D88D701677E4A81E7 }}
