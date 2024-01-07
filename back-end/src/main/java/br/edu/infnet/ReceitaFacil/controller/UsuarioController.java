@@ -14,7 +14,7 @@ import br.edu.infnet.ReceitaFacil.service.UsuarioService;
 
 @RestController
 // @CrossOrigin("http://localhost:3000")
-@CrossOrigin("receitafacil-frontend.azurewebsites.net")
+@CrossOrigin
 public class UsuarioController {
     public UsuarioService usuarioService;
 
