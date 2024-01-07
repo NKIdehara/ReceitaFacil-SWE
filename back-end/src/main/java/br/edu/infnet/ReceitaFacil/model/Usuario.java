@@ -1,32 +1,18 @@
 package br.edu.infnet.ReceitaFacil.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-
-@Entity
 public class Usuario {
-    @Id
-    @GeneratedValue
-    private Long idUsuario;
-    private String nome;
+    private String UID;
     private String email;
-    private int tipoAcesso;
+    private String nome;
+    private Long tipoAcesso;
+    private String endereco;
 
-    public Long getIdUsuario() {
-        return this.idUsuario;
+    public String getUID() {
+        return this.UID;
     }
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setUID(String UID) {
+        this.UID = UID;
     }
 
     public String getEmail() {
@@ -37,11 +23,41 @@ public class Usuario {
         this.email = email;
     }
 
-    public int getTipoAcesso() {
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Long getTipoAcesso() {
         return this.tipoAcesso;
     }
 
-    public void setTipoAcesso(int tipoAcesso) {
+    public void setTipoAcesso(Long tipoAcesso) {
         this.tipoAcesso = tipoAcesso;
+    }
+
+    public String getEndereco() {
+        return this.endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public Usuario() {
+    }
+    public Usuario(String email, String UID) {
+        this.email = email;
+        this.UID = UID;
+    }
+    public Usuario(String UID, String email, String nome, Long tipoAcesso, String endereco) {
+        this.UID = UID;
+        this.email = email;
+        this.nome = nome;
+        this.tipoAcesso = tipoAcesso;
+        this.endereco = endereco;
     }
 }

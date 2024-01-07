@@ -36,3 +36,5 @@ function App() {
 }
 
 export default App;
+export const BACKEND = "receitafacil-backend.azurewebsites.net";
+// export const BACKEND = "http://localhost:8080";

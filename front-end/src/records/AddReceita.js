@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { format } from "date-fns";
 import { Link, useNavigate } from 'react-router-dom';
+import { BACKEND } from '../App';
+import { user } from '../Firebase';
 
     export default function AddReceita() {
 
@@ -14,7 +16,7 @@ import { Link, useNavigate } from 'react-router-dom';
             ingredientes: "",
             preparo: "",
             dataReceita: hoje,
-            usuario: "",
+            usuario: user.getUID,
             figura: "https://firebasestorage.googleapis.com/v0/b/infnet-receitafacil.appspot.com/o/ic_food_0.png?alt=media&token=af33f298-dbcc-40ea-aa8c-ed1430a46a57"
         });
 
@@ -26,7 +28,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
         const onSubmit = async (e) => {
             e.preventDefault();
-            await axios.post("http://localhost:8080/receita", receita);
+            await axios.post(BACKEND + "/receita", receita);
             navigate("/receitas")
         }
 

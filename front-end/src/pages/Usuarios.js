@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { If, Else, Then } from 'react-if';
 import { user } from '../Firebase';
 import Spinner from '../layout/Spinner';
+import { BACKEND } from '../App';
 
 export default function Usuarios() {
     const [usuarios, setUsuarios] = useState([]);
@@ -11,7 +12,7 @@ export default function Usuarios() {
         loadUsuarios();
     }, []);
     const loadUsuarios = async() => {
-        const result = await axios.get("http://localhost:8080/usuariosFB");
+        const result = await axios.get(BACKEND + "/usuarios");
         setUsuarios(result.data);
         setEspera(false);
     }
@@ -58,7 +59,7 @@ export default function Usuarios() {
                  </div>
 
                 <div className="float-end">
-                    <Link className="btn btn-outline-dark m-1" to="/addUsuario">Novo Usuário</Link>
+                    {/* <Link className="btn btn-outline-dark m-1" to="/addUsuario">Novo Usuário</Link> */}
                     <Link className="btn btn-outline-dark m-1" to="/home">Cancelar</Link>
                 </div>
             </div>

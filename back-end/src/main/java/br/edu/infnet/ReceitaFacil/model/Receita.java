@@ -2,15 +2,11 @@ package br.edu.infnet.ReceitaFacil.model;
 
 import java.sql.Date;
 
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-
 public class Receita {
     private String id;
     private String nome;
     private String ingredientes;
     private String preparo;
-    @Temporal(TemporalType.DATE)
     private Date dataReceita;
     private String usuario;
     private String figura;

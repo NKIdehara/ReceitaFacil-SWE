@@ -13,7 +13,8 @@ import br.edu.infnet.ReceitaFacil.model.Receita;
 import br.edu.infnet.ReceitaFacil.service.ReceitaService;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+// @CrossOrigin("http://localhost:3000")
+@CrossOrigin("receitafacil-frontend.azurewebsites.net")
 public class ReceitaController {
     public ReceitaService receitaService;
 

@@ -15,12 +15,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.ListUsersPage;
 import com.google.firebase.cloud.FirestoreClient;
 
-import br.edu.infnet.ReceitaFacil.model.User;
+import br.edu.infnet.ReceitaFacil.model.Usuario;
 
 @Service
 public class UsuarioService {
-    public List<User> getUsuarios() throws InterruptedException, ExecutionException {
-        List<User> usuarios = new ArrayList<User>();
+    public List<Usuario> getUsuarios() throws InterruptedException, ExecutionException {
+        List<Usuario> usuarios = new ArrayList<Usuario>();
         Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<ListUsersPage> query = FirebaseAuth.getInstance().listUsersAsync(null);
         ListUsersPage listUsersPage = query.get();
@@ -28,11 +28,11 @@ public class UsuarioService {
             DocumentReference docRef = dbFirestore.collection("Usuarios").document(user.getUid());
             ApiFuture<DocumentSnapshot> future = docRef.get();
             DocumentSnapshot userData = future.get();
-            User usuario;
+            Usuario usuario;
             if(!userData.exists()) {
-                usuario = new User(user.getUid(), user.getEmail(), "Novo Usuário", Long.valueOf(2), "Sem Endereço");
+                usuario = new Usuario(user.getUid(), user.getEmail(), "Novo Usuário", Long.valueOf(2), "Sem Endereço");
             } else {
-                usuario = new User(user.getUid(), user.getEmail(), userData.getString("nome"), userData.getLong("tipoAcesso"), userData.getString("endereco"));
+                usuario = new Usuario(user.getUid(), user.getEmail(), userData.getString("nome"), userData.getLong("tipoAcesso"), userData.getString("endereco"));
             }
             usuarios.add(usuario);
         }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { user } from '../Firebase';
 import Spinner from '../layout/Spinner';
+import { BACKEND } from '../App';
 
 export default function Receitas() {
     const [receitas, setReceitas] = useState([]);
@@ -11,7 +12,7 @@ export default function Receitas() {
     }, []);
 
     const loadReceitas = async() => {
-        const result = await axios.post("http://localhost:8080/receitas", user.getUID);
+        const result = await axios.post(BACKEND + "/receitas", user.getUID);
         setReceitas(result.data);
         setEspera(false);
     }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { BACKEND } from '../App';
 
     export default function AddUsuario() {
 
@@ -20,7 +21,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
         const onSubmit = async (e) => {
             e.preventDefault();
-            await axios.post("http://localhost:8080/usuario", usuario);
+            await axios.post(BACKEND + "/usuario", usuario);
             navigate("/usuarios")
         }
 
