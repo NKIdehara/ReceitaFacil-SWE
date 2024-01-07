@@ -58,6 +58,10 @@ jobs:
         run: |
           unzip release.zip
           mv ./front-end/build/* ./
+<<<<<<< HEAD
+=======
+
+>>>>>>> af2a42a66053baf8a49ecfb8f835c4068f6601d9
       
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
