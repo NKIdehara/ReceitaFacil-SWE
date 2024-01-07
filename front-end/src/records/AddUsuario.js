@@ -21,7 +21,7 @@ import { BACKEND } from '../App';
 
         const onSubmit = async (e) => {
             e.preventDefault();
-            await axios.post(BACKEND + "/usuario", usuario);
+            await axios.post("https://receitafacil-backend.azurewebsites.net/usuario", usuario);
             navigate("/usuarios")
         }
 

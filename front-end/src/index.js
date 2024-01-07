@@ -11,6 +11,15 @@ root.render(
   </React.StrictMode>
 );
 
+// Cross-Origin Resource Sharing (CORS)
+// const express = require("express");
+// const app = express();
+// const cors = require('cors');
+// app.use(cors({
+//   origin: "*",
+// }));    
+
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

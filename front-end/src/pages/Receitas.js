@@ -12,7 +12,7 @@ export default function Receitas() {
     }, []);
 
     const loadReceitas = async() => {
-        const result = await axios.post(BACKEND + "/receitas", user.getUID);
+        const result = await axios.post("https://receitafacil-backend.azurewebsites.net/receitas", user.getUID);
         setReceitas(result.data);
         setEspera(false);
     }
