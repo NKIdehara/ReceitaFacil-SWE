@@ -30,7 +30,7 @@ public class UsuarioController {
     // }
 
     @GetMapping("/usuarios")
-    List<Usuario> getAllUsuariosFB() throws InterruptedException, ExecutionException {        
+    List<Usuario> getAllUsuarios() throws InterruptedException, ExecutionException {        
         return usuarioService.getUsuarios();
     }    
 }
