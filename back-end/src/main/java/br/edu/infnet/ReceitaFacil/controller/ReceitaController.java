@@ -31,7 +31,7 @@ public class ReceitaController {
         return receitaService.getReceitas(userUID);
     }
 
-    @GetMapping("/receitasADM")
+    @GetMapping("/receitasALL")
     List<Receita> getAllReceitas() throws InterruptedException, ExecutionException {
         return receitaService.getReceitas();
     }

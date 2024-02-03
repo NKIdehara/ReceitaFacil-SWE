@@ -12,35 +12,47 @@ const Login = () => {
     const [senha, setSenha] = useState('');
     const [message, setMessage] = useState('')
 
-    const state = { button: 0 };
+    const state = { button: -1 };
 
     const entrar = (e) => {
         e.preventDefault();
-        if (state.button === 1) {
-            signInWithEmailAndPassword(auth, email, senha)
-                .then((userCredential) => {
-                    user.setUID(userCredential.user.uid);
-                    navigate("/home");
-                })
-                .catch((error) => {
-                    setMessage(error.message);
-                    toast.show();
-                });
+        if (state.button === 0) {
+            user.setUID(0);
+            navigate("/home");
         }
-        if (state.button === 2) {
-            createUserWithEmailAndPassword(auth, email, senha)
-                .then((userCredential) => {
-                    user.setUID(userCredential.user.uid);
-                    navigate("/home");
-                })
-                .catch((error) => {
-                    setMessage(error.message);
-                    toast.show();
-                });
+        if (email === '' || senha === '') {
+            setMessage("Email ou senha inválido!");
+            let toast = new bootstrap.Toast(document.getElementById('Toast'));
+            toast.show();
+        } else {
+            if (state.button === 1) {
+                signInWithEmailAndPassword(auth, email, senha)
+                    .then((userCredential) => {
+                        user.setUID(userCredential.user.uid);
+                        navigate("/home");
+                    })
+                    .catch((error) => {
+                        setMessage(error.message);
+                        let toast = new bootstrap.Toast(document.getElementById('Toast'));
+                        toast.show();
+                    });
+            }
+            if (state.button === 2) {
+                createUserWithEmailAndPassword(auth, email, senha)
+                    .then((userCredential) => {
+                        user.setUID(userCredential.user.uid);
+                        navigate("/home");
+                    })
+                    .catch((error) => {
+                        setMessage(error.message);
+                        let toast = new bootstrap.Toast(document.getElementById('Toast'));
+                        toast.show();
+                    });
+            }    
         }
     }
 
-    const toast = new bootstrap.Toast(document.getElementById('Toast'));
+    let toast = new bootstrap.Toast(document.getElementById('Toast'));
     
     return (
         <div className="container-fluid">
@@ -55,7 +67,7 @@ const Login = () => {
                         <div className="col"></div>
                         <label for="usuario" class="col-sm-1 col-form-label">Usuário:</label>
                         <div className="col-sm">
-                            <input type={"email"} className="form-control" required placeholder="e-mail" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input type={"email"} className="form-control" placeholder="e-mail" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <div className="col"></div>
                     </div>
@@ -63,10 +75,11 @@ const Login = () => {
                         <div className="col"></div>
                         <label for="senha" class="col-sm-1 col-form-label">Senha:</label>
                         <div className="col-sm">
-                            <input type={"password"} className="form-control" required placeholder="senha" name="senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
+                            <input type={"password"} className="form-control" placeholder="senha" name="senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
                         </div>
                         <div className="col"></div>
                 </div>
+                    <button type="submit" className="btn btn btn-success m-3 btn-lg" onClick={() => (state.button = 0)} >Visitante</button>
                     <button type="submit" className="btn btn-outline-primary m-3 btn-lg" onClick={() => (state.button = 1)} >Login</button>
                     <button type="submit" className="btn btn-outline-primary m-3 btn-lg" onClick={() => (state.button = 2)} >Novo</button>
                 </form>
