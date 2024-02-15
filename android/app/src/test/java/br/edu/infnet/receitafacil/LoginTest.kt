@@ -1,4 +1,4 @@
-package br.edu.infnet.receitafacil
+package br.edu.infnet.receitafacil2
 
 import com.google.common.truth.Truth.assertThat
 import com.google.firebase.auth.FirebaseAuth

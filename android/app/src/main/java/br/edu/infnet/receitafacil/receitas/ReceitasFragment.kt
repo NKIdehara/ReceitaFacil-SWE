@@ -1,4 +1,4 @@
-package br.edu.infnet.receitafacil.receitas
+package br.edu.infnet.receitafacil2.receitas
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.edu.infnet.receitafacil.R
-import br.edu.infnet.receitafacil.databinding.FragmentReceitasBinding
+import br.edu.infnet.receitafacil2.R
+import br.edu.infnet.receitafacil2.databinding.FragmentReceitasBinding
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView

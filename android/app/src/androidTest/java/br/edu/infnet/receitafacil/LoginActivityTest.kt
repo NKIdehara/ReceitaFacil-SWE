@@ -1,4 +1,4 @@
-package br.edu.infnet.receitafacil
+package br.edu.infnet.receitafacil2
 
 
 import android.view.View

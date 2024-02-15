@@ -12,11 +12,11 @@ const Login = () => {
     const [senha, setSenha] = useState('');
     const [message, setMessage] = useState('')
 
-    const state = { button: -1 };
+    const state = { button: 0 };
 
     const entrar = (e) => {
         e.preventDefault();
-        if (state.button === 0) {
+        if (state.button === 3) {
             user.setUID(0);
             navigate("/home");
         }
@@ -79,9 +79,9 @@ const Login = () => {
                         </div>
                         <div className="col"></div>
                 </div>
-                    <button type="submit" className="btn btn btn-success m-3 btn-lg" onClick={() => (state.button = 0)} >Visitante</button>
                     <button type="submit" className="btn btn-outline-primary m-3 btn-lg" onClick={() => (state.button = 1)} >Login</button>
                     <button type="submit" className="btn btn-outline-primary m-3 btn-lg" onClick={() => (state.button = 2)} >Novo</button>
+                    <button type="submit" className="btn btn btn-success m-3 btn-lg" onClick={() => (state.button = 3)} >Visitante</button>
                 </form>
 
 
