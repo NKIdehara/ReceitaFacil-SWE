@@ -1,27 +1,9 @@
 package br.edu.infnet.ReceitaFacil.model;
 
-public class Usuario {
-    private String UID;
-    private String email;
+public class Usuario extends Autenticacao {
     private String nome;
     private Long tipoAcesso;
     private String endereco;
-
-    public String getUID() {
-        return this.UID;
-    }
-
-    public void setUID(String UID) {
-        this.UID = UID;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getNome() {
         return this.nome;
@@ -47,15 +29,9 @@ public class Usuario {
         this.endereco = endereco;
     }
 
-    public Usuario() {
-    }
-    public Usuario(String email, String UID) {
-        this.email = email;
-        this.UID = UID;
-    }
     public Usuario(String UID, String email, String nome, Long tipoAcesso, String endereco) {
-        this.UID = UID;
-        this.email = email;
+        super.setEmail(email);
+        super.setUID(UID);
         this.nome = nome;
         this.tipoAcesso = tipoAcesso;
         this.endereco = endereco;

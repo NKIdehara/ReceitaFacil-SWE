@@ -12,7 +12,7 @@ export default function Usuarios() {
         loadUsuarios();
     }, []);
     const loadUsuarios = async() => {
-        const result = await axios.get("https://receitafacil-backend.azurewebsites.net/usuarios");
+        const result = await axios.get(BACKEND.concat("/usuarios"));
         setUsuarios(result.data);
         setEspera(false);
     }
