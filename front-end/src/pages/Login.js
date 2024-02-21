@@ -1,9 +1,12 @@
 import * as bootstrap from 'bootstrap';
+import axios from 'axios';
 import React, { useState } from 'react';
 import ic_cook from '../resources/images/ic_cook.png';
 import { auth, user } from '../Firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { BACKEND } from '../App';
+import Spinner from '../layout/Spinner';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -16,8 +19,11 @@ const Login = () => {
 
     const entrar = (e) => {
         e.preventDefault();
+        setEspera(true);
         if (state.button === 3) {
             user.setUID(0);
+            user.setTipoAcesso(0);
+            setEspera(false);
             navigate("/home");
         }
         if (email === '' || senha === '') {
@@ -27,8 +33,11 @@ const Login = () => {
         } else {
             if (state.button === 1) {
                 signInWithEmailAndPassword(auth, email, senha)
-                    .then((userCredential) => {
+                    .then(async (userCredential) => {
                         user.setUID(userCredential.user.uid);
+                        const result = await axios.post(BACKEND.concat("/usuario"), userCredential.user.uid);
+                        user.setTipoAcesso(result.data.tipoAcesso);
+                        setEspera(false);
                         navigate("/home");
                     })
                     .catch((error) => {
@@ -41,6 +50,8 @@ const Login = () => {
                 createUserWithEmailAndPassword(auth, email, senha)
                     .then((userCredential) => {
                         user.setUID(userCredential.user.uid);
+                        user.setTipoAcesso(2);
+                        setEspera(false);
                         navigate("/home");
                     })
                     .catch((error) => {
@@ -51,6 +62,8 @@ const Login = () => {
             }    
         }
     }
+
+    const [espera, setEspera] = useState(false);    
 
     let toast = new bootstrap.Toast(document.getElementById('Toast'));
     
@@ -79,6 +92,7 @@ const Login = () => {
                         </div>
                         <div className="col"></div>
                 </div>
+                    {espera && <Spinner />}
                     <button type="submit" className="btn btn-outline-primary m-3 btn-lg" onClick={() => (state.button = 1)} >Login</button>
                     <button type="submit" className="btn btn-outline-primary m-3 btn-lg" onClick={() => (state.button = 2)} >Novo</button>
                     <button type="submit" className="btn btn btn-success m-3 btn-lg" onClick={() => (state.button = 3)} >Visitante</button>

@@ -29,7 +29,7 @@ export default function Receitas() {
 
     async function deleteReceita(id) {
         setEspera(true);
-        const result = await axios.post(BACKEND.concat("/apagarreceita"), id);
+        const result = await axios.post(BACKEND.concat("/apagareceita"), id);
         const novaLista = receitas.filter(receita => receita.id !== id);
         setReceitas(novaLista);
         setEspera(false);

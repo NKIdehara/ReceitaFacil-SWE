@@ -17,6 +17,14 @@ export default function Usuarios() {
         setEspera(false);
     }
 
+    async function deleteUsuario(uid) {
+        setEspera(true);
+        const result = await axios.post(BACKEND.concat("/apagausuario"), uid);
+        const novaLista = usuarios.filter(usuario => usuario.uid !== uid);
+        setUsuarios(novaLista);
+        setEspera(false);
+    }
+
     const [espera, setEspera] = useState(true);    
 
     if(!user.isNull) {
@@ -31,6 +39,7 @@ export default function Usuarios() {
                         <th scope="col">e-mail</th>
                         <th scope="col">Endereço</th>
                         <th scope="col">Tipo de Acesso</th>
+                        <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody className="text-start">
@@ -50,12 +59,16 @@ export default function Usuarios() {
                                         </If></Else>
                                     </If>
                                 </td>
+                                <If condition={(user.tipoAcesso === 1) && (user.UID !== usuario.uid)}>
+                                    <Then><td><button type="button" class="btn btn-light" onClick={() => deleteUsuario(usuario.uid)}>❌</button></td></Then>
+                                    <Else><td></td></Else>
+                                </If>
                                 </tr>
                             ))
                         }
                     </tbody>
                     </table>
-                    {espera && <Spinner />}                    
+                    {espera && <Spinner />}
                  </div>
 
                 <div className="float-end">

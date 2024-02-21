@@ -36,8 +36,8 @@ public class ReceitaController {
         return receitaService.getReceitas();
     }
 
-    @PostMapping("/apagarreceita")
+    @PostMapping("/apagareceita")
     void apagaReceita(@RequestBody String id) {
-        receitaService.delReceita(id);
+        receitaService.deleteReceita(id);
     }
 }
