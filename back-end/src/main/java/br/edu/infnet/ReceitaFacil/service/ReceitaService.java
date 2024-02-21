@@ -83,4 +83,10 @@ public class ReceitaService {
         }
         return receitas;
     }
+
+    @SuppressWarnings("null")
+    public void delReceita(String id) {        
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        dbFirestore.collection("Receitas").document(id).delete();
+    }
 }

@@ -27,6 +27,14 @@ export default function Receitas() {
         setEspera(false);
     }
 
+    async function deleteReceita(id) {
+        setEspera(true);
+        const result = await axios.post(BACKEND.concat("/apagarreceita"), id);
+        const novaLista = receitas.filter(receita => receita.id !== id);
+        setReceitas(novaLista);
+        setEspera(false);
+    }
+
     const [espera, setEspera] = useState(true);    
 
     if(!user.isNull) {
@@ -43,6 +51,7 @@ export default function Receitas() {
                         <th scope="col">Nome da Receita</th>
                         <th scope="col">Ingredientes</th>
                         <th scope="col">Preparo</th>
+                        <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody className="text-start">
@@ -55,6 +64,9 @@ export default function Receitas() {
                                 <td>{receita.nome}</td>
                                 <td style={{whiteSpace: "pre-wrap"}}>{receita.ingredientes}</td>
                                 <td style={{whiteSpace: "pre-wrap"}}>{receita.preparo}</td>
+                                <If condition={user.getUID !== 0}>
+                                    <td><button type="button" class="btn btn-light" onClick={() => deleteReceita(receita.id)}>❌</button></td>
+                                </If>
                                 </tr>
                             ))
                         }

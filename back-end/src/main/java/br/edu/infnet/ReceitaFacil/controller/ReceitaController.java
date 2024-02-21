@@ -35,4 +35,9 @@ public class ReceitaController {
     List<Receita> getAllReceitas() throws InterruptedException, ExecutionException {
         return receitaService.getReceitas();
     }
+
+    @PostMapping("/apagarreceita")
+    void apagaReceita(@RequestBody String id) {
+        receitaService.delReceita(id);
+    }
 }
