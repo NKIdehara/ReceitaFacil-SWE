@@ -75,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
                     // Novo usuário
                     Toast.makeText(applicationContext, "Novo usuário registrado com sucesso!",Toast.LENGTH_LONG).show()
                     usuario = Firebase.auth.currentUser?.uid.toString()
+                    CriaUsuario(usuario)
 
                     // Cria lista inicial de receitas para novo usuário
                     CriaReceitasBonus1()
@@ -92,6 +93,15 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun CriaUsuario(userUID: String){
+        val usuario = hashMapOf(
+            "nome" to "Usuário Android",
+            "endereco" to "Rua do Android, S/N",
+            "tipoAcesso" to 2
+        )
+        receitaDatabase = FirebaseFirestore.getInstance()
+        receitaDatabase.collection("Usuarios").document(userUID).set(usuario)
+    }
     private fun CriaReceitasBonus1(){
         val agora = LocalDate.parse(LocalDate.now().toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()
         val receitas_bonus = hashMapOf(

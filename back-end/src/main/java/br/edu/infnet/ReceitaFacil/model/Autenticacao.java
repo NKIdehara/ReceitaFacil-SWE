@@ -3,6 +3,7 @@ package br.edu.infnet.ReceitaFacil.model;
 public class Autenticacao {
     private String UID;
     private String email;
+    private String senha;
 
     public String getUID() {
         return this.UID;
@@ -29,4 +30,11 @@ public class Autenticacao {
         this.email = email;
     }
 
+    public String getSenha() {
+        return this.senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }

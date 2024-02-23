@@ -72,7 +72,9 @@ export default function Usuarios() {
                  </div>
 
                 <div className="float-end">
-                    {/* <Link className="btn btn-outline-dark m-1" to="/addUsuario">Novo Usuário</Link> */}
+                    <If condition={user.tipoAcesso === 1}>
+                        <Link className="btn btn-outline-dark m-1" to="/addUsuario">Novo Usuário</Link>
+                    </If>
                     <Link className="btn btn-outline-dark m-1" to="/home">Cancelar</Link>
                 </div>
             </div>

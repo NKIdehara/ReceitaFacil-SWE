@@ -34,6 +34,11 @@ public class UsuarioController {
         return usuarioService.getUsuario(userUID);
     }
 
+    @PostMapping("/novousuario")
+    Usuario setUsuario(@RequestBody Usuario usuario) throws InterruptedException, ExecutionException, FirebaseAuthException {
+        return usuarioService.setUsuario(usuario);
+    }
+
     @PostMapping("/apagausuario")
     void apagaUsuario(@RequestBody String UID) {
         try {
