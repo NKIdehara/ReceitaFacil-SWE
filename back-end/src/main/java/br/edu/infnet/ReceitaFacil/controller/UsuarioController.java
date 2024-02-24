@@ -1,6 +1,5 @@
 package br.edu.infnet.ReceitaFacil.controller;
 
-import java.rmi.server.UID;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.firebase.auth.FirebaseAuthException;
 
-import br.edu.infnet.ReceitaFacil.model.DadosUsuario;
+import br.edu.infnet.ReceitaFacil.model.UsuarioRegistro;
 import br.edu.infnet.ReceitaFacil.service.UsuarioService;
 
 @RestController
@@ -25,17 +24,17 @@ public class UsuarioController {
     }
 
      @GetMapping("/usuarios")
-    List<DadosUsuario> getAllUsuarios() throws InterruptedException, ExecutionException {
+    List<UsuarioRegistro> getAllUsuarios() throws InterruptedException, ExecutionException {
         return usuarioService.getUsuarios();
     }
 
     @PostMapping("/usuario")
-    DadosUsuario getUsuario(@RequestBody String userUID) throws InterruptedException, ExecutionException, FirebaseAuthException {
+    UsuarioRegistro getUsuario(@RequestBody String userUID) throws InterruptedException, ExecutionException, FirebaseAuthException {
         return usuarioService.getUsuario(userUID);
     }
 
     @PostMapping("/novousuario")
-    DadosUsuario setUsuario(@RequestBody DadosUsuario usuario) throws InterruptedException, ExecutionException, FirebaseAuthException {
+    UsuarioRegistro setUsuario(@RequestBody UsuarioRegistro usuario) throws InterruptedException, ExecutionException, FirebaseAuthException {
         return usuarioService.setUsuario(usuario);
     }
 

@@ -1,6 +1,7 @@
+
 package br.edu.infnet.ReceitaFacil.model;
 
-public class DadosUsuario extends Usuario {
+public class UsuarioRegistro extends Usuario {
     private String nome;
     private Long tipoAcesso;
     private String endereco;
@@ -29,7 +30,7 @@ public class DadosUsuario extends Usuario {
         this.endereco = endereco;
     }
 
-    public DadosUsuario(String UID, String email, String nome, Long tipoAcesso, String endereco) {
+    public UsuarioRegistro(String UID, String email, String nome, Long tipoAcesso, String endereco) {
         super.setEmail(email);
         super.setUID(UID);
         this.nome = nome;

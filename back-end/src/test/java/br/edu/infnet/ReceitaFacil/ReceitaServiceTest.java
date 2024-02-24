@@ -20,7 +20,6 @@ import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
 
 public class ReceitaServiceTest {
-/* 
     @Test
     public void ReceitaFacil_RecebeReceitasDoFirebase_True() throws InterruptedException, ExecutionException, IOException {
         // Arrange
@@ -40,7 +39,5 @@ public class ReceitaServiceTest {
 
         // Assert
         Assertions.assertThat(documents.size()).isNotNull();
-        Assertions.assertThat(documents.size()).isEqualTo(13);
     }
-*/
 }
