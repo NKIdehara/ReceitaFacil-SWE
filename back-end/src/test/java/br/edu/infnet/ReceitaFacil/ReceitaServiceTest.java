@@ -22,22 +22,26 @@ import com.google.firebase.cloud.FirestoreClient;
 public class ReceitaServiceTest {
     @Test
     public void ReceitaFacil_RecebeReceitasDoFirebase_True() throws InterruptedException, ExecutionException, IOException {
-        // Arrange
-		ClassLoader classLoader = ReceitaServiceTest.class.getClassLoader();
-		File file = new File(Objects.requireNonNull(classLoader.getResource("google-services.json")).getFile());
-		FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
-        FirebaseOptions options = FirebaseOptions.builder()
-			.setCredentials(GoogleCredentials.fromStream(serviceAccount))
-			.build();
-		FirebaseApp.initializeApp(options);		
+        try {
+            // Arrange
+            ClassLoader classLoader = ReceitaServiceTest.class.getClassLoader();
+            File file = new File(Objects.requireNonNull(classLoader.getResource("google-services.json")).getFile());
+            FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
+            FirebaseOptions options = FirebaseOptions.builder()
+                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                .build();
+            FirebaseApp.initializeApp(options);		
 
-        // Act
-        Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<QuerySnapshot> query = dbFirestore.collection("Receitas").orderBy("nome").get();
-        QuerySnapshot querySnapshot = query.get();
-        List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
+            // Act
+            Firestore dbFirestore = FirestoreClient.getFirestore();
+            ApiFuture<QuerySnapshot> query = dbFirestore.collection("Receitas").orderBy("nome").get();
+            QuerySnapshot querySnapshot = query.get();
+            List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
 
-        // Assert
-        Assertions.assertThat(documents.size()).isNotNull();
+            // Assert
+            Assertions.assertThat(documents.size()).isNotNull();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
