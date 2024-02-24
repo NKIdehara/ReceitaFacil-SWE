@@ -1,4 +1,4 @@
-package br.edu.infnet.receitafacil2
+package br.edu.infnet.receitafacil_swe
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package br.edu.infnet.receitafacil2.api
+package br.edu.infnet.receitafacil_swe.api
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

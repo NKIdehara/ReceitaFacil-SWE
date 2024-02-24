@@ -1,11 +1,10 @@
-package br.edu.infnet.receitafacil2
+package br.edu.infnet.receitafacil_swe
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -13,7 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import br.edu.infnet.receitafacil2.databinding.ActivityMainBinding
+import br.edu.infnet.receitafacil_swe.databinding.ActivityMainBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 

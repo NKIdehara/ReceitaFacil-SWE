@@ -1,4 +1,4 @@
-package br.edu.infnet.receitafacil2
+package br.edu.infnet.receitafacil_swe
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -12,16 +12,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import br.edu.infnet.receitafacil2.databinding.FragmentAdicionarBinding
-import br.edu.infnet.receitafacil2.receitas.ReceitasViewModel
+import br.edu.infnet.receitafacil_swe.databinding.FragmentAdicionarBinding
+import br.edu.infnet.receitafacil_swe.receitas.ReceitasViewModel
 import android.graphics.drawable.BitmapDrawable
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import br.edu.infnet.receitafacil2.api.ReceitaApiViewModel
-import br.edu.infnet.receitafacil2.api.ReceitaApiViewModelFactory
-import br.edu.infnet.receitafacil2.api.Repository
-import br.edu.infnet.receitafacil2.receitas.usuario
+import br.edu.infnet.receitafacil_swe.api.ReceitaApiViewModel
+import br.edu.infnet.receitafacil_swe.api.ReceitaApiViewModelFactory
+import br.edu.infnet.receitafacil_swe.api.Repository
+import br.edu.infnet.receitafacil_swe.receitas.usuario
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
