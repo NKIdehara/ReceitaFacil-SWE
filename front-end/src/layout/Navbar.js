@@ -19,7 +19,7 @@ export default function Navbar() {
                         <div className="float-end">
                             <Link className="btn btn-outline-light m-2 fa-4x" to="/home"><BsFillHouseFill /> Início</Link>
                             <Link className="btn btn-outline-light m-2" to="/receitas">Receitas</Link>
-                            <If condition={user.getUID !== 0}>
+                            <If condition={user.getTipoAcesso === 1}>
                                 <Link className="btn btn-outline-light m-2" to="/usuarios">Usuários</Link>
                             </If>
                             <Link className="btn btn-outline-light m-2" to="/logout"><BiExit /> Sair</Link>

@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.GetUsersResult;
 import com.google.firebase.auth.ListUsersPage;
 
-import br.edu.infnet.ReceitaFacil.model.Usuario;
+import br.edu.infnet.ReceitaFacil.model.DadosUsuario;
 
 public class UsuarioServiceTest {
 /* 

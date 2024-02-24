@@ -30,6 +30,7 @@ const Login = () => {
             setMessage("Email ou senha inválido!");
             let toast = new bootstrap.Toast(document.getElementById('Toast'));
             toast.show();
+            setEspera(false);
         } else {
             if (state.button === 1) {
                 signInWithEmailAndPassword(auth, email, senha)
@@ -37,10 +38,10 @@ const Login = () => {
                         user.setUID(userCredential.user.uid);
                         const result = await axios.post(BACKEND.concat("/usuario"), userCredential.user.uid);
                         user.setTipoAcesso(result.data.tipoAcesso);
-                        setEspera(false);
                         navigate("/home");
                     })
                     .catch((error) => {
+                        setEspera(false);
                         setMessage(error.message);
                         let toast = new bootstrap.Toast(document.getElementById('Toast'));
                         toast.show();
@@ -51,10 +52,10 @@ const Login = () => {
                     .then((userCredential) => {
                         user.setUID(userCredential.user.uid);
                         user.setTipoAcesso(2);
-                        setEspera(false);
-                        navigate("/home");
+                        navigate("/addUsuario");
                     })
                     .catch((error) => {
+                        setEspera(false);
                         setMessage(error.message);
                         let toast = new bootstrap.Toast(document.getElementById('Toast'));
                         toast.show();

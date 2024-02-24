@@ -9,10 +9,10 @@ import { BACKEND } from '../App';
 export default function Receitas() {
     const [receitas, setReceitas] = useState([]);
     useEffect( () => {
-        if (user.getUID === 0) {
-            loadReceitasALL();
-        } else {
+        if (user.getTipoAcesso == 2) {
             loadReceitas();
+        } else {
+            loadReceitasALL();
         }
     }, []);
 
@@ -76,7 +76,7 @@ export default function Receitas() {
                 </div>
 
                 <div className="float-end">
-                    <If condition={user.getUID !== 0}>
+                    <If condition={user.getTipoAcesso == 2}>
                         <Link className="btn btn-outline-dark m-1" to="/addReceita">Nova Receita</Link>
                     </If>
                     <Link className="btn btn-outline-dark m-1" to="/home">Cancelar</Link>

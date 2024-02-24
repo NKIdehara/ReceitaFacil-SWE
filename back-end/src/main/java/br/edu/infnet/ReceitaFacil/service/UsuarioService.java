@@ -22,12 +22,12 @@ import com.google.firebase.auth.ListUsersPage;
 import com.google.firebase.auth.UserRecord;
 import com.google.firebase.auth.UserRecord.CreateRequest;
 import com.google.firebase.cloud.FirestoreClient;
-import br.edu.infnet.ReceitaFacil.model.Usuario;
+import br.edu.infnet.ReceitaFacil.model.DadosUsuario;
 
 @Service
 public class UsuarioService {
-    public List<Usuario> getUsuarios() throws InterruptedException, ExecutionException {
-        List<Usuario> usuarios = new ArrayList<Usuario>();
+    public List<DadosUsuario> getUsuarios() throws InterruptedException, ExecutionException {
+        List<DadosUsuario> usuarios = new ArrayList<DadosUsuario>();
         Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<ListUsersPage> query = FirebaseAuth.getInstance().listUsersAsync(null);
         ListUsersPage listUsersPage = query.get();
@@ -35,29 +35,29 @@ public class UsuarioService {
             DocumentReference docRef = dbFirestore.collection("Usuarios").document(user.getUid());
             ApiFuture<DocumentSnapshot> future = docRef.get();
             DocumentSnapshot userData = future.get();
-            Usuario usuario;
+            DadosUsuario usuario;
             if(!userData.exists()) {
-                usuario = new Usuario(user.getUid(), user.getEmail(), "Novo Usuário", Long.valueOf(2), "Sem Endereço");
+                usuario = new DadosUsuario(user.getUid(), user.getEmail(), "Novo Usuário", Long.valueOf(2), "Sem Endereço");
             } else {
-                usuario = new Usuario(user.getUid(), user.getEmail(), userData.getString("nome"), userData.getLong("tipoAcesso"), userData.getString("endereco"));
+                usuario = new DadosUsuario(user.getUid(), user.getEmail(), userData.getString("nome"), userData.getLong("tipoAcesso"), userData.getString("endereco"));
             }
             usuarios.add(usuario);
         }
         return usuarios;
     }
 
-    public Usuario getUsuario(String UID) throws InterruptedException, ExecutionException, FirebaseAuthException {
-        Usuario usuario;
+    public DadosUsuario getUsuario(String UID) throws InterruptedException, ExecutionException, FirebaseAuthException {
+        DadosUsuario usuario;
         Firestore dbFirestore = FirestoreClient.getFirestore();
         UserRecord user = FirebaseAuth.getInstance().getUser(UID);
         DocumentReference docRef = dbFirestore.collection("Usuarios").document(UID);
         ApiFuture<DocumentSnapshot> future = docRef.get();
         DocumentSnapshot userData = future.get();
-        usuario = new Usuario(user.getUid(), user.getEmail(), userData.getString("nome"), userData.getLong("tipoAcesso"), userData.getString("endereco"));
+        usuario = new DadosUsuario(user.getUid(), user.getEmail(), userData.getString("nome"), userData.getLong("tipoAcesso"), userData.getString("endereco"));
         return usuario;
     }
 
-    public Usuario setUsuario(Usuario usuario) throws InterruptedException, ExecutionException, FirebaseAuthException {
+    public DadosUsuario setUsuario(DadosUsuario usuario) throws InterruptedException, ExecutionException, FirebaseAuthException {
         String userUID;
         CreateRequest request = new CreateRequest()
             .setEmail(usuario.getEmail())
