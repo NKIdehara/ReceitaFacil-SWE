@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.top_menu, menu)
         return true
     }
+
     fun RetornaInicio(item: MenuItem) {
         // Logout do aplicativo
         Firebase.auth.signOut()
@@ -61,5 +62,4 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
 }

@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Inicia Firebase Auth
-        auth = Firebase.auth
+            auth = Firebase.auth
     }
 
     fun Login(view: View) {
@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
         else {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // login ben sucedido
+                    // login bem sucedido
                     usuario = Firebase.auth.currentUser?.uid.toString()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
