@@ -11,6 +11,8 @@ import AddUsuario from "./records/AddUsuario";
 user.setUID(0);
 user.setTipoAcesso(1);
 
+require('leaked-handles');
+
 test('verifica se a tela inicial está renderizada corretamente', () => {
     render(<Home />, {wrapper: BrowserRouter})
     expect(screen.getByText(/infnet/i)).toBeInTheDocument()  

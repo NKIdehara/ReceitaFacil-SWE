@@ -1,4 +1,3 @@
-
 package br.edu.infnet.ReceitaFacil.model;
 
 public class UsuarioRegistro extends Usuario {

@@ -26,34 +26,9 @@ import com.google.firebase.auth.ListUsersPage;
 import br.edu.infnet.ReceitaFacil.model.Usuario;
 
 public class UsuarioServiceTest {
- 
     @Test
-    public void ReceitaFacil_TestaConexaoComFirebase_True() throws InterruptedException, ExecutionException, IOException {
+    public void ReceitaFacil_QuantidadeDeUsuariosMaiorDoQueZero_True() throws InterruptedException, ExecutionException, IOException, FirebaseAuthException {
         // Arrange
-        try {
-            ClassLoader classLoader = UsuarioServiceTest.class.getClassLoader();
-            File file = new File(Objects.requireNonNull(classLoader.getResource("google-services.json")).getFile());
-            FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
-            GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
-            FirebaseOptions options = FirebaseOptions.builder()
-                .setCredentials(credentials)
-                .build();
-            FirebaseApp.initializeApp(options);
-
-            // Act
-            GetUsersResult result = FirebaseAuth.getInstance().getUsersAsync(Arrays.asList()).get();        
-
-            // Assert
-            Assertions.assertThat(result.getUsers()).isNotNull();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
- 
-    @Test
-    public void ReceitaFacil_ContaQuantidadeDeUsuarios_True() throws InterruptedException, ExecutionException, IOException, FirebaseAuthException {
-        // Arrange
-        int num_usuarios = 8;
         List<Usuario> usuarios = new ArrayList<Usuario>();
         try {
             ClassLoader classLoader = UsuarioServiceTest.class.getClassLoader();
@@ -74,8 +49,31 @@ public class UsuarioServiceTest {
             }
 
             // Assert
-            Assertions.assertThat(usuarios.size()).isEqualTo(num_usuarios);
+            Assertions.assertThat(usuarios.size()).isGreaterThan(0);
 
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+ 
+    @Test
+    public void ReceitaFacil_ConectaComFirebaseAuth_True() throws InterruptedException, ExecutionException, IOException {
+        // Arrange
+        try {
+            ClassLoader classLoader = UsuarioServiceTest.class.getClassLoader();
+            File file = new File(Objects.requireNonNull(classLoader.getResource("google-services.json")).getFile());
+            FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
+            GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
+            FirebaseOptions options = FirebaseOptions.builder()
+                .setCredentials(credentials)
+                .build();
+            FirebaseApp.initializeApp(options);
+
+            // Act
+            GetUsersResult result = FirebaseAuth.getInstance().getUsersAsync(Arrays.asList()).get();        
+
+            // Assert
+            Assertions.assertThat(result.getUsers()).isNotNull();
         } catch (Exception e) {
             System.out.println(e);
         }

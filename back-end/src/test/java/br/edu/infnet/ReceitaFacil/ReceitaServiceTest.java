@@ -21,7 +21,7 @@ import com.google.firebase.cloud.FirestoreClient;
 
 public class ReceitaServiceTest {
     @Test
-    public void ReceitaFacil_RecebeReceitasDoFirebase_True() throws InterruptedException, ExecutionException, IOException {
+    public void ReceitaFacil_ConectaComFirestoreDatabase_True() throws InterruptedException, ExecutionException, IOException {
         try {
             // Arrange
             ClassLoader classLoader = ReceitaServiceTest.class.getClassLoader();

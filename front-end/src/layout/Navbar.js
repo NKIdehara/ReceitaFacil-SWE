@@ -13,8 +13,8 @@ export default function Navbar() {
                 <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                     <div className="container-fluid">
                         <div className="float-start">
-                            <div><a className="navbar-brand">Receita Fácil</a></div>
-                            <div><img src={logo} className="w-25" /></div>
+                            <div><p className="navbar-brand">Receita Fácil</p></div>
+                            <div><img alt="" src={logo} className="w-25" /></div>
                         </div>                    
                         <div className="float-end">
                             <Link className="btn btn-outline-light m-2 fa-4x" to="/home"><BsFillHouseFill /> Início</Link>

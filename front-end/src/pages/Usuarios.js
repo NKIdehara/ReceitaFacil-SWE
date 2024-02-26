@@ -55,13 +55,13 @@ export default function Usuarios() {
                                         <Then>{"Administrador"}</Then>
                                         <Else><If condition={usuario.tipoAcesso === 2}>
                                             <Then>{"Usuário"}</Then>
-                                            <Else>{"Visitante"}</Else>
+                                            <Else><Then>{"Visitante"}</Then></Else>
                                         </If></Else>
                                     </If>
                                 </td>
                                 <If condition={(user.tipoAcesso === 1) && (user.UID !== usuario.uid)}>
-                                    <Then><td><button type="button" class="btn btn-light" onClick={() => deleteUsuario(usuario.uid)}>❌</button></td></Then>
-                                    <Else><td></td></Else>
+                                    <Then><td><button type="button" className="btn btn-light" onClick={() => deleteUsuario(usuario.uid)}>❌</button></td></Then>
+                                    <Else><Then><td></td></Then></Else>
                                 </If>
                                 </tr>
                             ))
@@ -72,9 +72,9 @@ export default function Usuarios() {
                  </div>
 
                 <div className="float-end">
-                    <If condition={user.tipoAcesso === 1}>
+                    <If condition={user.tipoAcesso === 1}><Then>
                         <Link className="btn btn-outline-dark m-1" to="/addUsuario">Novo Usuário</Link>
-                    </If>
+                    </Then></If>
                     <Link className="btn btn-outline-dark m-1" to="/home">Cancelar</Link>
                 </div>
             </div>

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { If } from 'react-if';
+import { If, Then } from 'react-if';
 import axios from 'axios';
 import { user } from '../Firebase';
 import Spinner from '../layout/Spinner';
 import { BACKEND } from '../App';
 
 export default function Receitas() {
+    
     const [receitas, setReceitas] = useState([]);
     useEffect( () => {
         if (user.getTipoAcesso == 2) {
@@ -65,7 +66,7 @@ export default function Receitas() {
                                 <td style={{whiteSpace: "pre-wrap"}}>{receita.ingredientes}</td>
                                 <td style={{whiteSpace: "pre-wrap"}}>{receita.preparo}</td>
                                 <If condition={user.getUID !== 0}>
-                                    <td><button type="button" class="btn btn-light" onClick={() => deleteReceita(receita.id)}>❌</button></td>
+                                    <td><button type="button" className="btn btn-light" onClick={() => deleteReceita(receita.id)}>❌</button></td>
                                 </If>
                                 </tr>
                             ))
@@ -76,9 +77,9 @@ export default function Receitas() {
                 </div>
 
                 <div className="float-end">
-                    <If condition={user.getTipoAcesso == 2}>
+                    <If condition={user.getTipoAcesso == 2}><Then>
                         <Link className="btn btn-outline-dark m-1" to="/addReceita">Nova Receita</Link>
-                    </If>
+                    </Then></If>
                     <Link className="btn btn-outline-dark m-1" to="/home">Cancelar</Link>
                 </div>
             </div>

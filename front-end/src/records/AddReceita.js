@@ -39,19 +39,19 @@ import { user } from '../Firebase';
                     <h2 className="text-center m-0">Cadastro de Receitas</h2>
                     <form className="my-4" onSubmit={(e) => onSubmit(e)}>
                         <div className="form-group row my-2">
-                            <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
+                            <label htmlFor="nome" className="col-sm-2 col-form-label">Nome:</label>
                             <div className="col-sm-10">
                                 <input type={"text"} className="form-control" required placeholder="Nome da receita" name="nome" value={nome} onChange={(e) => onInputChange(e)} />
                             </div>
                         </div>
                         <div className="form-group row my-2">
-                            <label for="nome" class="col-sm-2 col-form-label">Ingredientes:</label>
+                            <label htmlFor="nome" className="col-sm-2 col-form-label">Ingredientes:</label>
                             <div className="col-sm-10">
                                 <textarea className="form-control" rows="4" cols="50" required placeholder="Ingredientes" name="ingredientes" value={ingredientes} onChange={(e) => onInputChange(e)} />
                             </div>
                         </div>
                         <div className="form-group row my-2">
-                            <label for="nome" class="col-sm-2 col-form-label">Preparo:</label>
+                            <label htmlFor="nome" className="col-sm-2 col-form-label">Preparo:</label>
                             <div className="col-sm-10">
                                 <textarea className="form-control" rows="4" cols="50" required placeholder="Preparo da receita" name="preparo" value={preparo} onChange={(e) => onInputChange(e)} />
                             </div>

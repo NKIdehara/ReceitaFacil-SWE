@@ -61,35 +61,35 @@ import { BACKEND } from '../App';
                     <h2 className="text-center m-0">Cadastro de Usuários</h2>
                     <form className="my-4" onSubmit={(e) => onSubmit(e)}>
                         <div className="form-group row my-2">
-                                <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
+                                <label htmlFor="nome" className="col-sm-2 col-form-label">Nome:</label>
                                 <div className="col-sm-10">
                                     <input type={"text"} className="form-control" required placeholder="Digite o nome" name="nome" value={nome} onChange={(e) => onInputChange(e)} />
                                 </div>
                         </div>
                         <div className="form-group row my-2">
-                            <label for="email" className="col-sm-2 col-form-label">e-mail:</label>
+                            <label htmlFor="email" className="col-sm-2 col-form-label">e-mail:</label>
                             <div className="col-sm-10">
                                 <input type={"text"} className="form-control" required placeholder="Digite o e-mail" name="email" value={email} onChange={(e) => onInputChange(e)} />
                             </div>
                         </div>
                         <div className="form-group row my-2">
-                                <label for="endereco" class="col-sm-2 col-form-label">Endereço:</label>
+                                <label htmlFor="endereco" className="col-sm-2 col-form-label">Endereço:</label>
                                 <div className="col-sm-10">
                                     <input type={"text"} className="form-control" required placeholder="Digite o endereço" name="endereco" value={endereco} onChange={(e) => onInputChange(e)} />
                                 </div>
                         </div>
                         <div className="form-group row my-2">
-                            <label for="tipoAcesso" className="col-sm-2 col-form-label">Tipo de Acesso:</label>
+                            <label htmlFor="tipoAcesso" className="col-sm-2 col-form-label">Tipo de Acesso:</label>
                             <div className="col-sm-10">
                                 <select className="form-select" aria-label="Tipo de Acesso" name="tipoAcesso" value={tipoAcesso} onChange={(e) => onInputChange(e)} >
-                                    <option selected>Selecione o tipo de acesso</option>
+                                    <option value="0">Selecione o tipo de acesso</option>
                                     <option value="1">Administrador</option>
                                     <option value="2">Usuário</option>
                                 </select>                        
                             </div>
                         </div>
                         <div className="form-group row my-2">
-                                <label for="senha" class="col-sm-2 col-form-label">Senha:</label>
+                                <label htmlFor="senha" className="col-sm-2 col-form-label">Senha:</label>
                                 <div className="col-sm-10">
                                     <input type={"password"} className="form-control" required placeholder="Digite a senha" name="senha" value={senha} onChange={(e) => onInputChange(e)} />
                                 </div>
