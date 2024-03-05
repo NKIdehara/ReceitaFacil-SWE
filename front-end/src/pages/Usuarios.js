@@ -11,15 +11,16 @@ export default function Usuarios() {
     useEffect( () => {
         loadUsuarios();
     }, []);
+
     const loadUsuarios = async() => {
-        const result = await axios.get(BACKEND.concat("/usuarios"));
+        const result = await axios.post(BACKEND.concat("/usuarios"), user.getUID);
         setUsuarios(result.data);
         setEspera(false);
     }
 
     async function deleteUsuario(uid) {
         setEspera(true);
-        const result = await axios.post(BACKEND.concat("/apagausuario"), uid);
+        await axios.delete(BACKEND.concat("/apagausuario/", uid));
         const novaLista = usuarios.filter(usuario => usuario.uid !== uid);
         setUsuarios(novaLista);
         setEspera(false);

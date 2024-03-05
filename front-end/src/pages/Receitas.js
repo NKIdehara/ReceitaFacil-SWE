@@ -10,7 +10,7 @@ export default function Receitas() {
     
     const [receitas, setReceitas] = useState([]);
     useEffect( () => {
-        if (user.getTipoAcesso == 2) {
+        if (user.getTipoAcesso === 2) {
             loadReceitas();
         } else {
             loadReceitasALL();
@@ -18,19 +18,19 @@ export default function Receitas() {
     }, []);
 
     const loadReceitasALL = async() => {
-        const result = await axios.get(BACKEND.concat("/receitasALL"));
+        const result = await axios.get(BACKEND.concat("/receitas"));
         setReceitas(result.data);
         setEspera(false);
     }
     const loadReceitas = async() => {
-        const result = await axios.post(BACKEND.concat("/receitas"), user.getUID);
+        const result = await axios.post(BACKEND.concat("/receitasusuario"), user.getUID);
         setReceitas(result.data);
         setEspera(false);
     }
 
     async function deleteReceita(id) {
         setEspera(true);
-        const result = await axios.post(BACKEND.concat("/apagareceita"), id);
+        await axios.delete(BACKEND.concat("/apagareceita/", id));
         const novaLista = receitas.filter(receita => receita.id !== id);
         setReceitas(novaLista);
         setEspera(false);
@@ -60,7 +60,7 @@ export default function Receitas() {
                             receitas.map((receita, idReceita) => (
                                 <tr>
                                 <th scope="row" key={idReceita}>{idReceita+1}</th>
-                                <td><img src={receita.figura} style={{'maxWidth': '100px'}}/></td>
+                                <td><img src={receita.figura} style={{'maxWidth': '100px'}} alt=""/></td>
                                 <td>{receita.dataReceita}</td>
                                 <td>{receita.nome}</td>
                                 <td style={{whiteSpace: "pre-wrap"}}>{receita.ingredientes}</td>
@@ -77,7 +77,7 @@ export default function Receitas() {
                 </div>
 
                 <div className="float-end">
-                    <If condition={user.getTipoAcesso == 2}><Then>
+                    <If condition={user.getTipoAcesso === 2}><Then>
                         <Link className="btn btn-outline-dark m-1" to="/addReceita">Nova Receita</Link>
                     </Then></If>
                     <Link className="btn btn-outline-dark m-1" to="/home">Cancelar</Link>

@@ -28,7 +28,7 @@ import { user } from '../Firebase';
 
         const onSubmit = async (e) => {
             e.preventDefault();
-            await axios.post(BACKEND.concat("/receita"), receita);
+            await axios.post(BACKEND.concat("/receitanova"), receita);
             navigate("/receitas")
         }
 

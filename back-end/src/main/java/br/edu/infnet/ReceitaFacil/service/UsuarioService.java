@@ -58,6 +58,16 @@ public class UsuarioService {
         return usuario;
     }
 
+    public Boolean existUsuario(String UID) throws InterruptedException, ExecutionException {
+        try {
+            FirebaseAuth.getInstance().getUser(UID);
+        } catch (FirebaseAuthException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     public UsuarioRegistro setUsuario(UsuarioRegistro usuario) throws InterruptedException, ExecutionException, FirebaseAuthException {
         String userUID;
         CreateRequest request = new CreateRequest()

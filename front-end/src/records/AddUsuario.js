@@ -42,7 +42,7 @@ import { BACKEND } from '../App';
                 toast.show();
             } else {
                 try {
-                    await axios.post(BACKEND.concat("/novousuario"), usuario);
+                    await axios.post(BACKEND.concat("/usuarionovo"), usuario);
                 } catch(err) {
                     setMessage(err.message);
                     let toast = new bootstrap.Toast(document.getElementById('Toast'));
@@ -53,7 +53,7 @@ import { BACKEND } from '../App';
         }
 
     let toast = new bootstrap.Toast(document.getElementById('Toast'));
-    
+        
     return (
         <div className="container">
             <div className="py-4">

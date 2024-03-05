@@ -52,7 +52,7 @@ const Login = () => {
                     .then((userCredential) => {
                         user.setUID(userCredential.user.uid);
                         user.setTipoAcesso(2);
-                        navigate("/addUsuario");
+                        navigate("/home");
                     })
                     .catch((error) => {
                         setEspera(false);
@@ -66,13 +66,13 @@ const Login = () => {
 
     const [espera, setEspera] = useState(false);    
 
-    let toast = new bootstrap.Toast(document.getElementById('Toast'));
+    // let toast = new bootstrap.Toast(document.getElementById('Toast'));
     
     return (
         <div className="container-fluid">
             <div className="my-4">
                 <h1>Receita Fácil</h1>
-                <img src={ic_cook} className="w-25 m-1" style={{'maxWidth': '300px'}} />
+                <img src={ic_cook} className="w-25 m-1" style={{'maxWidth': '300px'}} alt=""/>
             </div>
 
             <div className="container">
