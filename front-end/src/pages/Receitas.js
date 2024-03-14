@@ -65,15 +65,15 @@ export default function Receitas() {
                                 <td>{receita.nome}</td>
                                 <td style={{whiteSpace: "pre-wrap"}}>{receita.ingredientes}</td>
                                 <td style={{whiteSpace: "pre-wrap"}}>{receita.preparo}</td>
-                                <If condition={user.getUID !== 0}>
+                                <If condition={user.getUID !== 0}><Then>
                                     <td><button type="button" className="btn btn-light" onClick={() => deleteReceita(receita.id)}>❌</button></td>
-                                </If>
+                                </Then></If>
                                 </tr>
                             ))
                         }
                     </tbody>
                     </table>
-                    {espera && <Spinner />}                    
+                    {espera && <Spinner />}
                 </div>
 
                 <div className="float-end">

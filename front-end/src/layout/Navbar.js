@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../resources/images/ic_cook.png';
 import { Link } from 'react-router-dom';
-import { If } from 'react-if';
+import { If, Then } from 'react-if';
 import { BsFillHouseFill } from "react-icons/bs";
 import { BiExit } from "react-icons/bi";
 import { user } from '../Firebase';
@@ -19,9 +19,9 @@ export default function Navbar() {
                         <div className="float-end">
                             <Link className="btn btn-outline-light m-2 fa-4x" to="/home"><BsFillHouseFill /> Início</Link>
                             <Link className="btn btn-outline-light m-2" to="/receitas">Receitas</Link>
-                            <If condition={user.getTipoAcesso === 1}>
+                            <If condition={user.getTipoAcesso === 1}><Then>
                                 <Link className="btn btn-outline-light m-2" to="/usuarios">Usuários</Link>
-                            </If>
+                            </Then></If>
                             <Link className="btn btn-outline-light m-2" to="/logout"><BiExit /> Sair</Link>
                         </div>
                     </div>
