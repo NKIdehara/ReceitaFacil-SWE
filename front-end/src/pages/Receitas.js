@@ -28,16 +28,6 @@ export default function Receitas() {
         setEspera(false);
     }
 
-    // async function editaReceita(id) {
-    //     setEspera(true);
-        // await axios.delete(BACKEND.concat("/apagareceita/", id));
-        // const novaLista = receitas.filter(receita => receita.id !== id);
-        // setReceitas(novaLista);
-    //     window.alert("Editar Receita");
-    //     loadReceitas();
-    //     setEspera(false);
-    // }
-
     async function deleteReceita(id) {
         setEspera(true);
         await axios.delete(BACKEND.concat("/apagareceita/", id));
@@ -76,7 +66,9 @@ export default function Receitas() {
                                 <td>{receita.nome}</td>
                                 <td style={{whiteSpace: "pre-wrap"}}>{receita.ingredientes}</td>
                                 <td style={{whiteSpace: "pre-wrap"}}>{receita.preparo}</td>
-                                <td><Link className="btn btn-light m-1" to="/edtReceita">📝</Link></td>
+                                <If condition={user.getUID !== 0}><Then>
+                                    <td><Link className="btn btn-light m-1" to="/edtReceita" state={{ _id: receita.id, _nome: receita.nome, _ingredientes: receita.ingredientes, _preparo: receita.preparo, _dataReceita: receita.dataReceita, _usuario: receita.usuario, _figura: receita.figura }}>📝</Link></td>
+                                </Then></If>
                                 <If condition={user.getUID !== 0}><Then>
                                     <td><button type="button" className="btn btn-light" onClick={() => deleteReceita(receita.id)}>❌</button></td>
                                 </Then></If>

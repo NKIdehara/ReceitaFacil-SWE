@@ -85,6 +85,25 @@ public class ReceitaService {
     }
 
     @SuppressWarnings("null")
+    public void updateReceita(Receita receita) throws InterruptedException, ExecutionException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        Map<String, Object> atualizaReceita = new HashMap<>();
+
+        SimpleDateFormat style = new SimpleDateFormat("yyyy-MM-dd");
+        String dataReceita = style.format(receita.getDataReceita());
+
+        atualizaReceita.put("nome", receita.getNome());
+        atualizaReceita.put("ingredientes", receita.getIngredientes());
+        atualizaReceita.put("preparo", receita.getPreparo());
+        atualizaReceita.put("dataReceita", dataReceita);
+        atualizaReceita.put("usuario", receita.getUsuario());
+        atualizaReceita.put("figura", receita.getFigura());
+
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("Receitas").document(receita.getId()).update(atualizaReceita);
+        WriteResult result = collectionsApiFuture.get();
+    }
+
+    @SuppressWarnings("null")
     public void deleteReceita(String id) {        
         Firestore dbFirestore = FirestoreClient.getFirestore();
         dbFirestore.collection("Receitas").document(id).delete();

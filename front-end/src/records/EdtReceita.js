@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { format } from "date-fns";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { BACKEND } from '../App';
 import { user, storage } from '../Firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -9,21 +9,23 @@ import { v4 } from 'uuid';
 import Spinner from '../layout/Spinner';
 
     export default function EdtReceita() {
+        const location = useLocation();
+        const { _id, _nome, _ingredientes, _preparo, _dataReceita, _usuario, _figura } = location.state;
+
         let navigate = useNavigate();
-        var hoje = format(new Date(), "yyyy-MM-dd")
-        var imagem = "https://firebasestorage.googleapis.com/v0/b/infnet-receitafacil.appspot.com/o/ic_food_0.png?alt=media&token=af33f298-dbcc-40ea-aa8c-ed1430a46a57";
 
         const [imgReceita, setImgReceita] = useState(null);
         const [receita, setReceita] = useState({
-            nome: "",
-            ingredientes: "",
-            preparo: "",
-            dataReceita: hoje,
-            usuario: user.getUID,
-            figura: imagem
+            id: _id,
+            nome: _nome,
+            ingredientes: _ingredientes,
+            preparo: _preparo,
+            dataReceita: _dataReceita,
+            usuario: _usuario,
+            figura: _figura
         });
 
-        const {nome, ingredientes, preparo, dataReceita, usuario, figura} = receita;
+        const {id, nome, ingredientes, preparo, dataReceita, usuario, figura} = receita;
 
         const onInputChange = (e) => {
             setReceita({...receita, [e.target.name]:e.target.value});
@@ -42,7 +44,7 @@ import Spinner from '../layout/Spinner';
             setEspera(true);
             var imagem = await uploadImgReceita();
             if(imagem !== null) receita.figura = imagem;
-            const result = await axios.post(BACKEND.concat("/receitanova"), receita);
+            const result = await axios.put(BACKEND.concat("/atualizareceita"), receita);
             navigate("/receitas");
         }
 
@@ -62,7 +64,7 @@ import Spinner from '../layout/Spinner';
                                     var image = document.getElementById('imagem');
                                     image.src = URL.createObjectURL(event.target.files[0]);
                                 }}/>
-                                <div><img id="imagem" className="img-thumbnail" style={{'maxWidth': '250px'}} alt="" /></div>
+                                <div><img id="imagem" className="img-thumbnail" style={{'maxWidth': '250px'}} alt="" src={receita.figura} /></div>
                             </div>
                         </div>
                         <div className="form-group row my-2">
